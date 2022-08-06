@@ -1,9 +1,6 @@
 import classes from "./CartItem.module.css";
 import { useDispatch } from "react-redux/es/exports";
-import {
-  decreaseQuantity,
-  increaseQuantity,
-} from "../../features/cart/cartSlice";
+import { addProduct, decreaseQuantity } from "../../features/cart/cartSlice";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
@@ -15,7 +12,14 @@ const CartItem = (props) => {
   };
 
   const increaseHandler = () => {
-    dispatch(increaseQuantity(id));
+    dispatch(
+      addProduct({
+        id,
+        title,
+        price,
+        quantity: 1,
+      })
+    );
   };
 
   return (

@@ -19,12 +19,6 @@ export const cartSlice = createSlice({
         state.dataCart.push(action.payload);
       }
     },
-    increaseQuantity: (state, action) => {
-      const item = state.dataCart.find(
-        (cartItem) => cartItem.id === action.payload
-      );
-      item.quantity++;
-    },
     decreaseQuantity: (state, action) => {
       const index = state.dataCart.findIndex(function (item) {
         return item.id === action.payload;
@@ -42,7 +36,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addProduct, increaseQuantity, decreaseQuantity, showCart } =
+export const { addProduct, decreaseQuantity, showCart } =
   cartSlice.actions;
 
 export const selectCart = (state) => state.cartSad.dataCart;
