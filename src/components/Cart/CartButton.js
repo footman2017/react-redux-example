@@ -7,6 +7,11 @@ import { showCart } from "../../features/cart/uiSlice";
 const CartButton = (props) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCart);
+  let totalItems = 0;
+  
+  cartItems.forEach(element => {
+    totalItems += element.quantity;  
+  });
 
   const cartToggle = () => {
     dispatch(showCart());
@@ -15,7 +20,7 @@ const CartButton = (props) => {
   return (
     <button className={classes.button} onClick={cartToggle}>
       <span>My Cart</span>
-      <span className={classes.badge}>{cartItems.length}</span>
+      <span className={classes.badge}>{totalItems}</span>
     </button>
   );
 };
