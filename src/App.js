@@ -27,11 +27,7 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (initialLanding) {
-      return;
-    }
-
-    if (isChanged) {
+    if (isChanged && !initialLanding) {
       dispatch(postData(cartData));
     }
   }, [cartData, isChanged, initialLanding, dispatch]);
